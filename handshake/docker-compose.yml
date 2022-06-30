@@ -1,0 +1,33 @@
+version: '3' 
+services: 
+  client_encora: 
+    build:
+      context: ./client
+      dockerfile: client_encora.Dockerfile
+    command: tail -f /dev/null
+    volumes:
+      - .:/usr/src/app
+    cap_add:
+      - NET_ADMIN
+    networks:
+      encora_network:
+        ipv4_address: 10.222.1.3
+
+  server_encora:
+    build:
+      context: ./server
+      dockerfile: server_encora.Dockerfile
+    cap_add:
+      - NET_ADMIN
+    networks:
+      encora_network:
+        ipv4_address: 10.222.1.2
+
+networks: 
+  encora_network: 
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.222.1.0/24
+          gateway: 10.222.1.1
+
