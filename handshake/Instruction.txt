@@ -1,0 +1,5 @@
+1 passo execute em um terminal: docker-compose up --build
+2 passo execute em outro terminal ./scripts/connect_to_client.sh
+3 passo execute em outro terminal sudo wireshark e selecione o client para analisar
+4 passo execute no terminal do client python3 solution/solution_clean_with_fru_fru.py
+5 passo em ip coloque 10.222.1.2 em dport coloque 8998 e em sport coloque 9999
